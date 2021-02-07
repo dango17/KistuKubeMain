@@ -1,0 +1,305 @@
+fileFormatVersion: 2
+guid: 5e6dcf5d615a25c46b4aaff1454be041
+ModelImporter:
+  serializedVersion: 25
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'Hips' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: ModelFBX(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cone001
+      parentName: ModelFBX(Clone)
+      position: {x: -0.0064422293, y: 0.37556902, z: -0.08013483}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 0.888277, y: 0.888277, z: 0.583423}
+    - name: Cylinder001
+      parentName: ModelFBX(Clone)
+      position: {x: -0.11792897, y: 0.08302061, z: -0.055621423}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 0.607453, y: 0.607453, z: 0.668356}
+    - name: Group001
+      parentName: ModelFBX(Clone)
+      position: {x: -0.123219244, y: 0.11498587, z: -0.009954095}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Box001
+      parentName: Group001
+      position: {x: -0.61300606, y: 0.36138266, z: -0.11498587}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cylinder002
+      parentName: Group001
+      position: {x: 0.006569524, y: 0.05691375, z: -0.05721115}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.888277, y: 0.888277, z: 0.786326}
+    - name: Cylinder003
+      parentName: ModelFBX(Clone)
+      position: {x: 0.100114465, y: 0.08302061, z: -0.055621423}
+      rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+      scale: {x: -0.607453, y: -0.607453, z: -0.668356}
+    - name: Group002
+      parentName: ModelFBX(Clone)
+      position: {x: 0.10540474, y: 0.11498587, z: -0.009954095}
+      rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+      scale: {x: -1, y: -1, z: -1}
+    - name: Box002
+      parentName: Group002
+      position: {x: -0.61300606, y: 0.36138266, z: -0.11498587}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cylinder004
+      parentName: Group002
+      position: {x: 0.006569524, y: 0.05691375, z: -0.05721115}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.888277, y: 0.888277, z: 0.786326}
+    - name: Cylinder005
+      parentName: ModelFBX(Clone)
+      position: {x: -0.0075123804, y: 0.75531334, z: -0.07419288}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1.009675, y: 1.009675, z: 1.009675}
+    - name: Torus001
+      parentName: ModelFBX(Clone)
+      position: {x: -0.0066183, y: 0.849398, z: -0.092649676}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1.2515501, y: 1.2515501, z: 1.2515501}
+    - name: Group32692
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: -0.017740887, z: -0.21694446}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group62049
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: -0.017740887, z: -0.21694446}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group7740
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: 0.042235877, z: -0.37846497}
+      rotation: {x: -0.6583084, y: 0, z: -0, w: 0.75274837}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group39560
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: -0.017740887, z: -0.21694446}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group50787
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: 0.042235877, z: -0.37846497}
+      rotation: {x: -0.6583084, y: 0, z: -0, w: 0.75274837}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group24972
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: 0.042235877, z: -0.37846497}
+      rotation: {x: -0.6583084, y: 0, z: -0, w: 0.75274837}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group2483
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: 0.042235877, z: -0.37846497}
+      rotation: {x: -0.6583084, y: 0, z: -0, w: 0.75274837}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group53975
+      parentName: ModelFBX(Clone)
+      position: {x: -0.0064414428, y: 1.1323538, z: 0.14688395}
+      rotation: {x: -0.7848919, y: 0, z: 0, w: 0.6196327}
+      scale: {x: 1, y: 0.74263, z: 1}
+    - name: Group45556
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: -0.017740887, z: -0.19734246}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group39062
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: -0.017740887, z: -0.19734246}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group49134
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: -0.017740887, z: -0.19734246}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group44146
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: -0.017740887, z: -0.19734246}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group41781
+      parentName: ModelFBX(Clone)
+      position: {x: -0.00012120369, y: -0.017740887, z: -0.19734246}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 0.981184, y: 1, z: 1}
+    - name: Group25515
+      parentName: ModelFBX(Clone)
+      position: {x: -0.00017871744, y: -0.017740887, z: -0.19734246}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 0.972255, y: 1, z: 1}
+    - name: Group65060
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: 0.042235877, z: -0.37846497}
+      rotation: {x: -0.6583084, y: 0, z: -0, w: 0.75274837}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group21111
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: 0.042235877, z: -0.37846497}
+      rotation: {x: -0.6583084, y: 0, z: -0, w: 0.75274837}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group3923
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: 0.042235877, z: -0.37846497}
+      rotation: {x: -0.6583084, y: 0, z: -0, w: 0.75274837}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group41906
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: 0.042235877, z: -0.37846497}
+      rotation: {x: -0.6583084, y: 0, z: -0, w: 0.75274837}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group10356
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: 0.042235877, z: -0.37846497}
+      rotation: {x: -0.6583084, y: 0, z: -0, w: 0.75274837}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group48539
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: 0.042235877, z: -0.37846497}
+      rotation: {x: -0.6583084, y: 0, z: -0, w: 0.75274837}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group51284
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: 0.042235877, z: -0.37846497}
+      rotation: {x: -0.6583084, y: 0, z: -0, w: 0.75274837}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group49792
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: 0.042235877, z: -0.37846497}
+      rotation: {x: -0.6583084, y: 0, z: -0, w: 0.75274837}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group40229
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: 0.042235877, z: -0.37846497}
+      rotation: {x: -0.6583084, y: 0, z: -0, w: 0.75274837}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group56141
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: 0.042235877, z: -0.37846497}
+      rotation: {x: -0.6583084, y: 0, z: -0, w: 0.75274837}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group5084
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: 0.042235877, z: -0.37846497}
+      rotation: {x: -0.6583084, y: 0, z: -0, w: 0.75274837}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group61114
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: 0.042235877, z: -0.37846497}
+      rotation: {x: -0.6583084, y: 0, z: -0, w: 0.75274837}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group45287
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: 0.042235877, z: -0.37846497}
+      rotation: {x: -0.6583084, y: 0, z: -0, w: 0.75274837}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group34558
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: 0.042235877, z: -0.37846497}
+      rotation: {x: -0.6583084, y: 0, z: -0, w: 0.75274837}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group55662
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: -0.017740887, z: -0.19734246}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Group32949
+      parentName: ModelFBX(Clone)
+      position: {x: -0, y: -0.017740887, z: -0.19734246}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
