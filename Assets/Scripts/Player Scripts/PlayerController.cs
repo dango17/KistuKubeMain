@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class PlayerContoller : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     Vector3 targetPosition;
     bool moving = false;
@@ -26,24 +26,26 @@ public class PlayerContoller : MonoBehaviour
         AttachToNearest();
     }
 
-    void Update()
+    public bool PlayerMove()
     {
-
         if (Input.GetKeyDown("space")) //Fix for mobile. 
         //Gunna need 2 finger controller or bottons for spinning
         {
             GetTargetInfo();
+            return true;
         }
         if (moving == true)
         {
             this.transform.parent = null;
-
             Move();
+            return true;
         }
         else if (this.transform.parent == null)
         {
             AttachToNearest();
+            return false;
         }
+        return true;
     }
 
     void GetTargetInfo()
@@ -67,15 +69,15 @@ public class PlayerContoller : MonoBehaviour
                 targetPosition = hit.point;
                 if (playerObjectNorm == Vector3.up || playerObjectNorm == Vector3.down)
                 {
-                    targetPosition = new Vector3(Mathf.Round(targetPosition.x), Mathf.Round(targetPosition.y * 100.0f) / 100.0f, Mathf.Round(targetPosition.z));
+                    targetPosition = new Vector3(Mathf.Round(targetPosition.x), transform.position.y, Mathf.Round(targetPosition.z));
                 }
                 else if (playerObjectNorm == Vector3.left || playerObjectNorm == Vector3.right)
                 {
-                    targetPosition = new Vector3(Mathf.Round(targetPosition.x * 100.0f) / 100.0f, Mathf.Round(targetPosition.y), Mathf.Round(targetPosition.z));
+                    targetPosition = new Vector3(transform.position.x, Mathf.Round(targetPosition.y), Mathf.Round(targetPosition.z));
                 }
                 else if (playerObjectNorm == Vector3.forward || playerObjectNorm == Vector3.back)
                 {
-                    targetPosition = new Vector3(Mathf.Round(targetPosition.x), Mathf.Round(targetPosition.y), Mathf.Round(targetPosition.z * 100.0f) / 100.0f);
+                    targetPosition = new Vector3(Mathf.Round(targetPosition.x), Mathf.Round(targetPosition.y), transform.position.z);
                 }
                 movingToColour = hit.transform.name;
                 moving = true;

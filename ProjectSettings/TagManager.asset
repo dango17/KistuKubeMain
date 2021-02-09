@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SmallCube
   - Face
+  - Hostile
   layers:
   - Default
   - TransparentFX
