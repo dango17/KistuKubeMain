@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 54a386a1f0a07204b9c7329d41b10aa9
+  - enabled: 1
     path: Assets/Scenes/CubeRotationMechanic.unity
     guid: 634f41e9e635b16479131bc7356e29f7
   m_configObjects: {}
