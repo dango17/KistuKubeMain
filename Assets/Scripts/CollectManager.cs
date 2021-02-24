@@ -15,8 +15,7 @@ public class CollectManager : MonoBehaviour
     }
  
     void Start()
-    {
-        
+    {     
         coinValueTxt.text = currentCoins.ToString() + "/3";
     } 
 
