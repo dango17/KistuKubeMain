@@ -9,6 +9,8 @@ public class TurnManagerScript : MonoBehaviour
 
     bool PlayerTurn = true;
 
+    private int currentHostile = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,21 +23,24 @@ public class TurnManagerScript : MonoBehaviour
     {
         if (PlayerTurn)
         {
-            Debug.Log("Player: " + player.GetComponent<PlayerController>().PlayerMove());
             if (!player.GetComponent<PlayerController>().PlayerMove())
             {
+                currentHostile = 0;
                 PlayerTurn = false;
             }
         }
         else
         {
-            foreach (GameObject hostile in hostileGameObjects)
+            if (currentHostile < hostileGameObjects.Length)
             {
-                Debug.Log("Hostile: " + hostile.GetComponent<HostileMoveScript>().HostileMove());
-                if (!hostile.GetComponent<HostileMoveScript>().HostileMove())
+                if (!hostileGameObjects[currentHostile].GetComponent<HostileMoveScript>().HostileMove())
                 {
-                    PlayerTurn = true;
+                    currentHostile++;
                 }
+            }
+            else
+            {
+                PlayerTurn = true;
             }
         }
     }

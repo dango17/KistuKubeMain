@@ -24,17 +24,13 @@ public class HostileMoveScript : MonoBehaviour
     public bool HostileMove()
     {
         Vector3 hostileObjectNorm = this.gameObject.transform.up;
-        hostileObjectNorm.x = Mathf.Round(hostileObjectNorm.x * 100.0f) / 100.0f;
-        hostileObjectNorm.y = Mathf.Round(hostileObjectNorm.y * 100.0f) / 100.0f;
-        hostileObjectNorm.z = Mathf.Round(hostileObjectNorm.z * 100.0f) / 100.0f;
         Vector3 playerObjectNorm = player.transform.up;
-        playerObjectNorm.x = Mathf.Round(playerObjectNorm.x * 100.0f) / 100.0f;
-        playerObjectNorm.y = Mathf.Round(playerObjectNorm.y * 100.0f) / 100.0f;
-        playerObjectNorm.z = Mathf.Round(playerObjectNorm.z * 100.0f) / 100.0f;
-        if (hostileObjectNorm == playerObjectNorm)
+        if (Vector3.Dot(hostileObjectNorm, playerObjectNorm) > 0.9f)
         {
             if (moving == false && this.transform.parent != null)
             {
+                this.transform.parent = null;
+                ChooseDirection();
                 GetTargetInfo();
             }
             if (moving == true)
@@ -52,40 +48,108 @@ public class HostileMoveScript : MonoBehaviour
         return false;
     }
 
+    void ChooseDirection()
+    {
+        Vector3 ObjectNorm = transform.up;
+
+        if (Vector3.Dot(ObjectNorm, Vector3.up) > 0.9f || Vector3.Dot(ObjectNorm, Vector3.down) > 0.9f)
+        {
+            Debug.Log("Top/Bottom");
+            if (player.transform.position.x > transform.position.x + 0.5f)
+            {
+                transform.LookAt(new Vector3(transform.position.x + 1, transform.position.y, transform.position.z), transform.up);
+            }
+            else if (player.transform.position.x < transform.position.x - 0.5f)
+            {
+                transform.LookAt(new Vector3(transform.position.x - 1, transform.position.y, transform.position.z), transform.up);
+            }
+            else if (player.transform.position.z > transform.position.z + 0.5f)
+            {
+                transform.LookAt(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1), transform.up);
+            }
+            else if (player.transform.position.z < transform.position.z - 0.5f)
+            {
+                transform.LookAt(new Vector3(transform.position.x, transform.position.y, transform.position.z - 1), transform.up);
+            }
+        }
+        else if (Vector3.Dot(ObjectNorm, Vector3.left) > 0.9f || Vector3.Dot(ObjectNorm, Vector3.right) > 0.9f)
+        {
+            Debug.Log("Left/Right");
+            if (player.transform.position.x > transform.position.x + 0.5f)
+            {
+                transform.LookAt(new Vector3(transform.position.x + 1, transform.position.y, transform.position.z), transform.up);
+            }
+            else if (player.transform.position.x < transform.position.x - 0.5f)
+            {
+                transform.LookAt(new Vector3(transform.position.x - 1, transform.position.y, transform.position.z), transform.up);
+            }
+            else if (player.transform.position.y > transform.position.y + 0.5f)
+            {
+                transform.LookAt(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), transform.up);
+            }
+            else if (player.transform.position.y < transform.position.y - 0.5f)
+            {
+                transform.LookAt(new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), transform.up);
+            }
+        }
+        else if (Vector3.Dot(ObjectNorm, Vector3.forward) > 0.9f || Vector3.Dot(ObjectNorm, Vector3.back) > 0.9f)
+        {
+            Debug.Log("Forward/Back");
+            if (player.transform.position.y > transform.position.y + 0.5f)
+            {
+                transform.LookAt(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), transform.up);
+            }
+            else if (player.transform.position.y < transform.position.y - 0.5f)
+            {
+                transform.LookAt(new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), transform.up);
+            }
+            else if (player.transform.position.z > transform.position.z + 0.5f)
+            {
+                transform.LookAt(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1), transform.up);
+            }
+            else if (player.transform.position.z < transform.position.z - 0.5f)
+            {
+                transform.LookAt(new Vector3(transform.position.x, transform.position.y, transform.position.z - 1), transform.up);
+            }
+        }
+    }
+
     void GetTargetInfo()
     {
         RaycastHit hit;
-        //this.gameObject.transform.LookAt(player.transform.position);
         Vector3 aimDir = transform.TransformDirection(0.0f, -0.4f, 1.0f);
         if (Physics.Raycast(transform.position, aimDir, out hit, 1.0f))
         {
             Vector3 rayHitNorm = hit.normal;
-            rayHitNorm.x = Mathf.Round(rayHitNorm.x * 100.0f) / 100.0f;
-            rayHitNorm.y = Mathf.Round(rayHitNorm.y * 100.0f) / 100.0f;
-            rayHitNorm.z = Mathf.Round(rayHitNorm.z * 100.0f) / 100.0f;
-            Vector3 playerObjectNorm = this.gameObject.transform.up;
-            playerObjectNorm.x = Mathf.Round(playerObjectNorm.x * 100.0f) / 100.0f;
-            playerObjectNorm.y = Mathf.Round(playerObjectNorm.y * 100.0f) / 100.0f;
-            playerObjectNorm.z = Mathf.Round(playerObjectNorm.z * 100.0f) / 100.0f;
+            Vector3 ObjectNorm = transform.up;
 
-            if ((rayHitNorm == playerObjectNorm) && (hit.transform.gameObject.tag == "Face"))
+            if ((Vector3.Dot(rayHitNorm, ObjectNorm) > 0.9f) && (hit.transform.gameObject.tag == "Face"))
             {
                 targetPosition = hit.point;
-                if (playerObjectNorm == Vector3.up || playerObjectNorm == Vector3.down)
+                if (Vector3.Dot(ObjectNorm, Vector3.up) > 0.9f || Vector3.Dot(ObjectNorm, Vector3.down) > 0.9f)
                 {
                     targetPosition = new Vector3(Mathf.Round(targetPosition.x), transform.position.y, Mathf.Round(targetPosition.z));
                 }
-                else if (playerObjectNorm == Vector3.left || playerObjectNorm == Vector3.right)
+                else if (Vector3.Dot(ObjectNorm, Vector3.left) > 0.9f || Vector3.Dot(ObjectNorm, Vector3.right) > 0.9f)
                 {
                     targetPosition = new Vector3(transform.position.x, Mathf.Round(targetPosition.y), Mathf.Round(targetPosition.z));
                 }
-                else if (playerObjectNorm == Vector3.forward || playerObjectNorm == Vector3.back)
+                else if (Vector3.Dot(ObjectNorm, Vector3.forward) > 0.9f || Vector3.Dot(ObjectNorm, Vector3.back) > 0.9f)
                 {
                     targetPosition = new Vector3(Mathf.Round(targetPosition.x), Mathf.Round(targetPosition.y), transform.position.z);
+                }
+                else
+                {
+                    targetPosition = transform.position;
                 }
                 movingToColour = hit.transform.name;
                 moving = true;
             }
+        }
+        else
+        {
+            targetPosition = transform.position;
+            moving = true;
         }
     }
 
@@ -93,7 +157,7 @@ public class HostileMoveScript : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, movementSpeed * Time.deltaTime);
 
-        if (transform.position == targetPosition)
+        if (Vector3.Dot(transform.position.normalized, targetPosition.normalized) > 0.999999f)
         {
             TileAffect();
             moving = false;

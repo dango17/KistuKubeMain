@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown("space")) //Fix for mobile. 
         //Gunna need 2 finger controller or bottons for spinning
         {
+            this.transform.parent = null;
             GetTargetInfo();
             return true;
         }
@@ -56,26 +57,20 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 2000))
         {
             Vector3 rayHitNorm = hit.normal;
-            rayHitNorm.x = Mathf.Round(rayHitNorm.x * 100.0f) / 100.0f;
-            rayHitNorm.y = Mathf.Round(rayHitNorm.y * 100.0f) / 100.0f;
-            rayHitNorm.z = Mathf.Round(rayHitNorm.z * 100.0f) / 100.0f;
-            Vector3 playerObjectNorm = this.gameObject.transform.up;
-            playerObjectNorm.x = Mathf.Round(playerObjectNorm.x * 100.0f) / 100.0f;
-            playerObjectNorm.y = Mathf.Round(playerObjectNorm.y * 100.0f) / 100.0f;
-            playerObjectNorm.z = Mathf.Round(playerObjectNorm.z * 100.0f) / 100.0f;
+            Vector3 playerObjectNorm = transform.up;
 
-            if ((rayHitNorm == playerObjectNorm) && (hit.transform.gameObject.tag == "Face"))
+            if ((Vector3.Dot(rayHitNorm, playerObjectNorm) > 0.9f) && (hit.transform.gameObject.tag == "Face"))
             {
                 targetPosition = hit.point;
-                if (playerObjectNorm == Vector3.up || playerObjectNorm == Vector3.down)
+                if (Vector3.Dot(playerObjectNorm, Vector3.up) > 0.9f || Vector3.Dot(playerObjectNorm, Vector3.down) > 0.9f)
                 {
                     targetPosition = new Vector3(Mathf.Round(targetPosition.x), transform.position.y, Mathf.Round(targetPosition.z));
                 }
-                else if (playerObjectNorm == Vector3.left || playerObjectNorm == Vector3.right)
+                else if (Vector3.Dot(playerObjectNorm, Vector3.left) > 0.9f || Vector3.Dot(playerObjectNorm, Vector3.right) > 0.9f)
                 {
                     targetPosition = new Vector3(transform.position.x, Mathf.Round(targetPosition.y), Mathf.Round(targetPosition.z));
                 }
-                else if (playerObjectNorm == Vector3.forward || playerObjectNorm == Vector3.back)
+                else if (Vector3.Dot(playerObjectNorm, Vector3.forward) > 0.9f || Vector3.Dot(playerObjectNorm, Vector3.back) > 0.9f)
                 {
                     targetPosition = new Vector3(Mathf.Round(targetPosition.x), Mathf.Round(targetPosition.y), transform.position.z);
                 }
@@ -89,7 +84,7 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, movementSpeed * Time.deltaTime);
 
-        if (transform.position == targetPosition)
+        if (Vector3.Dot(transform.position.normalized, targetPosition.normalized) > 0.999999f)
         {
             TileAffect();
             moving = false;
