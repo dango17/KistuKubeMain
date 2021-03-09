@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿//S1903729
+//Daniel Oldham 
+//Written on 13/11/2020
+//Prints current colours of each face on the rubix cube, was
+//going to have a mini map in game, since that has changed. 
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,21 +20,9 @@ public class CubeMap : MonoBehaviour
     public Transform front;
     public Transform back;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void Set()
     {
         cubeState = FindObjectOfType<CubeState>();
-
         UpdateMap(cubeState.front, front);
         UpdateMap(cubeState.back, back);
         UpdateMap(cubeState.left, left);
@@ -36,7 +30,6 @@ public class CubeMap : MonoBehaviour
         UpdateMap(cubeState.up, up);
         UpdateMap(cubeState.down, down);
     }
-
 
     void UpdateMap(List<GameObject> face, Transform side)
     {

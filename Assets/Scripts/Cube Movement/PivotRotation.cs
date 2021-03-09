@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿//S1903729
+//Daniel Oldham 
+//Written on 14/11/2020
+//Responsible for snapping/transfoming the pivot points based in each
+//side of the rubix cube based on angles
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,18 +24,20 @@ public class PivotRotation : MonoBehaviour
     private ReadCube readCube;
     private CubeState cubeState;
        
-    // Start is called before the first frame update
+    //Calls for read & cube state scripts 
     void Start()
     {
         readCube = FindObjectOfType<ReadCube>();
         cubeState = FindObjectOfType<CubeState>();
     }
 
-    // Late Update is called once per frame at the end
+    //Check if cube is rotating/dragging
     void LateUpdate()
     {
         if (dragging && !autoRotating)
-        {
+        { 
+            //If stopped dragging, call rotate to Right angle 
+            //function to snap position  
             SpinSide(activeSide);
             if (Input.GetMouseButtonUp(0))
             {
@@ -41,8 +48,7 @@ public class PivotRotation : MonoBehaviour
         if (autoRotating)
         {
             AutoRotate();
-        }
-                
+        }              
     }
 
     private void SpinSide(List<GameObject> side)
@@ -52,8 +58,7 @@ public class PivotRotation : MonoBehaviour
 
         // current mouse position minus the last mouse position
         Vector3 mouseOffset = (Input.mousePosition - mouseRef);        
-
-
+        //If so, rotate the corrisponding side on the Y axis
         if (side == cubeState.up)
         {
             rotation.y = (mouseOffset.x + mouseOffset.y) * sensitivity * 1;
@@ -78,14 +83,15 @@ public class PivotRotation : MonoBehaviour
         {
             rotation.x = (mouseOffset.x + mouseOffset.y) * sensitivity * 1;
         }
-        // rotate
+        //Rotate
+        //Converts to touch on Android Build
         transform.Rotate(rotation, Space.Self);
 
-        // store mouse
+        //Store mousePos
+        //Store finger positions
         mouseRef = Input.mousePosition;
     }
-
-         
+       
     public void Rotate(List<GameObject> side)
     {
         activeSide = side;
@@ -108,7 +114,8 @@ public class PivotRotation : MonoBehaviour
     public void RotateToRightAngle()
     {
         Vector3 vec = transform.localEulerAngles;
-        // round vec to nearest 90 degrees
+        //round vec to nearest 90 degrees
+        //Causes the faces to snap if let go early  
         vec.x = Mathf.Round(vec.x / 90) * 90;
         vec.y = Mathf.Round(vec.y / 90) * 90;
         vec.z = Mathf.Round(vec.z / 90) * 90;

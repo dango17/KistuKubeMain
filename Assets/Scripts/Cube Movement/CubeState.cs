@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿//S1903729
+//Daniel Oldham 
+//Written on 13/11/2020
+//Manager for detecting which state the cube is being navigated, rotation or flipping
+//Also ensures all smaller cubes are parented together to form the rubix cube
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,18 +19,6 @@ public class CubeState : MonoBehaviour
 
     public static bool autoRotating = false;
     public static bool started = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void PickUp(List<GameObject> cubeSide)
     {

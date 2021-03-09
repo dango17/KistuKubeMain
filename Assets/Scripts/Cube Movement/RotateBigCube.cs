@@ -1,12 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-//Daniel Oldham 
+﻿//Daniel Oldham 
 //S1903729
 //13/11/20
 //Allows user to swipe cube into desired direction, 
 //while the camera remains in a fixed position
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class RotateBigCube : MonoBehaviour
 {

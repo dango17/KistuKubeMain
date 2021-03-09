@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿//S1903729
+//Daniel Oldham 
+//Written on 13/11/2020
+//Read cube manager will use raycasts to detect which colour faces corrispond 
+//to each side on the cube, will input string to testing map & detect which 
+//side of the face has been grabbed, from there, the pivots can rotate. 
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,20 +34,21 @@ public class ReadCube : MonoBehaviour
     void Start()
     {
         SetRayTransforms();
-
-
         cubeState = FindObjectOfType<CubeState>();
         cubeMap = FindObjectOfType<CubeMap>();
         ReadState();
-        CubeState.started = true;
-       
-
+        CubeState.started = true;     
     }
 
-    // Update is called once per frame
-    void Update()
+    void SetRayTransforms()
     {
-
+        // populate the ray lists with raycasts eminating from the transform, angled towards the cube.
+        upRays = BuildRays(tUp, new Vector3(90, 90, 0));
+        downRays = BuildRays(tDown, new Vector3(270, 90, 0));
+        leftRays = BuildRays(tLeft, new Vector3(0, 180, 0));
+        rightRays = BuildRays(tRight, new Vector3(0, 0, 0));
+        frontRays = BuildRays(tFront, new Vector3(0, 90, 0));
+        backRays = BuildRays(tBack, new Vector3(0, 270, 0));
     }
 
     public void ReadState()
@@ -59,21 +67,7 @@ public class ReadCube : MonoBehaviour
 
         // update the map with the found positions
         cubeMap.Set();
-
     }
-
-
-    void SetRayTransforms()
-    {
-        // populate the ray lists with raycasts eminating from the transform, angled towards the cube.
-        upRays = BuildRays(tUp, new Vector3(90, 90, 0));
-        downRays = BuildRays(tDown, new Vector3(270, 90, 0));
-        leftRays = BuildRays(tLeft, new Vector3(0, 180, 0));
-        rightRays = BuildRays(tRight, new Vector3(0, 0, 0));
-        frontRays = BuildRays(tFront, new Vector3(0, 90, 0));
-        backRays = BuildRays(tBack, new Vector3(0, 270, 0));
-    }
-
 
     List<GameObject> BuildRays(Transform rayTransform, Vector3 direction)
     {
@@ -81,10 +75,10 @@ public class ReadCube : MonoBehaviour
         int rayCount = 0;
         List<GameObject> rays = new List<GameObject>();
         // This creates 9 rays in the shape of the side of the cube with
-        // Ray 0 at the top left and Ray 8 at the bottom right:
-        //  |0|1|2|
-        //  |3|4|5|
-        //  |6|7|8|
+        // Ray 0 at the top left and Ray 8 at the bottom right
+        // |0|1|2|
+        // |3|4|5|
+        // |6|7|8|
 
         for (int y = 1; y > -2; y--)
         {
@@ -101,7 +95,6 @@ public class ReadCube : MonoBehaviour
         }
         rayTransform.localRotation = Quaternion.Euler(direction);
         return rays;
-
     }
 
     public List<GameObject> ReadFace(List<GameObject> rayStarts, Transform rayTransform)
@@ -127,5 +120,4 @@ public class ReadCube : MonoBehaviour
         }
         return facesHit;
     }
-
 }
