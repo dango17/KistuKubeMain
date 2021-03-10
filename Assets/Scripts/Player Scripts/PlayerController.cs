@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
 {
     Vector3 targetPosition;
     bool moving = false;
-    string movingToColour;
 
     public HealthBarScript healthBar;
 
@@ -31,7 +30,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown("space")) //Fix for mobile. 
         //Gunna need 2 finger controller or bottons for spinning
         {
-            this.transform.parent = null;
             GetTargetInfo();
             return true;
         }
@@ -58,24 +56,26 @@ public class PlayerController : MonoBehaviour
         {
             Vector3 rayHitNorm = hit.normal;
             Vector3 playerObjectNorm = transform.up;
-
-            if ((Vector3.Dot(rayHitNorm, playerObjectNorm) > 0.9f) && (hit.transform.gameObject.tag == "Face"))
+            if (Vector3.Distance(hit.transform.position, transform.position) <= 1.5f)
             {
-                targetPosition = hit.point;
-                if (Vector3.Dot(playerObjectNorm, Vector3.up) > 0.9f || Vector3.Dot(playerObjectNorm, Vector3.down) > 0.9f)
+                if ((Vector3.Dot(rayHitNorm, playerObjectNorm) > 0.9f) && (hit.transform.gameObject.tag == "Face"))
                 {
-                    targetPosition = new Vector3(Mathf.Round(targetPosition.x), transform.position.y, Mathf.Round(targetPosition.z));
+                    targetPosition = hit.point;
+                    if (Vector3.Dot(playerObjectNorm, Vector3.up) > 0.9f || Vector3.Dot(playerObjectNorm, Vector3.down) > 0.9f)
+                    {
+                        targetPosition = new Vector3(Mathf.Round(targetPosition.x), transform.position.y, Mathf.Round(targetPosition.z));
+                    }
+                    else if (Vector3.Dot(playerObjectNorm, Vector3.left) > 0.9f || Vector3.Dot(playerObjectNorm, Vector3.right) > 0.9f)
+                    {
+                        targetPosition = new Vector3(transform.position.x, Mathf.Round(targetPosition.y), Mathf.Round(targetPosition.z));
+                    }
+                    else if (Vector3.Dot(playerObjectNorm, Vector3.forward) > 0.9f || Vector3.Dot(playerObjectNorm, Vector3.back) > 0.9f)
+                    {
+                        targetPosition = new Vector3(Mathf.Round(targetPosition.x), Mathf.Round(targetPosition.y), transform.position.z);
+                    }
+                    transform.LookAt(targetPosition, transform.up);
+                    moving = true;
                 }
-                else if (Vector3.Dot(playerObjectNorm, Vector3.left) > 0.9f || Vector3.Dot(playerObjectNorm, Vector3.right) > 0.9f)
-                {
-                    targetPosition = new Vector3(transform.position.x, Mathf.Round(targetPosition.y), Mathf.Round(targetPosition.z));
-                }
-                else if (Vector3.Dot(playerObjectNorm, Vector3.forward) > 0.9f || Vector3.Dot(playerObjectNorm, Vector3.back) > 0.9f)
-                {
-                    targetPosition = new Vector3(Mathf.Round(targetPosition.x), Mathf.Round(targetPosition.y), transform.position.z);
-                }
-                movingToColour = hit.transform.name;
-                moving = true;
             }
         }
     }
@@ -86,7 +86,6 @@ public class PlayerController : MonoBehaviour
 
         if (Vector3.Dot(transform.position.normalized, targetPosition.normalized) > 0.999999f)
         {
-            TileAffect();
             moving = false;
         }
     }
@@ -99,42 +98,9 @@ public class PlayerController : MonoBehaviour
         this.transform.parent = attachTo.transform;
     }
 
-    void TileAffect()
+    public void DealDamage()
     {
-        if(movingToColour == "Red")
-        {
-            Debug.Log("Heavy Damage!");
-            playerHealth -= 25.0f;
-            healthBar.SetHealth(playerHealth);
-        }
-        else if (movingToColour == "Orange")
-        {
-            Debug.Log("Light Damage!");
-            playerHealth -= 10.0f;
-            healthBar.SetHealth(playerHealth);
-        }
-        else if (movingToColour == "Purple")
-        {
-            Debug.Log("Miss a turn!");
-        }
-        else if (movingToColour == "Blue")
-        {
-            Debug.Log("Heal!");
-            playerHealth += 25.0f;
-            healthBar.SetHealth(playerHealth);
-        }
-        else if (movingToColour == "Green")
-        {
-            Debug.Log("Nothing Here!");
-        }
-        else if (movingToColour == "Yellow")
-        {
-            Debug.Log("Score!");
-            playerScore += 5.0f;
-        }
-        else
-        {
-            Debug.Log("Tile Not Found");
-        }
+        Debug.Log("Player Dead!");
+        Destroy(this.gameObject);
     }
 }

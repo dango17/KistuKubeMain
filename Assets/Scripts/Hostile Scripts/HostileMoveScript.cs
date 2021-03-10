@@ -8,7 +8,6 @@ public class HostileMoveScript : MonoBehaviour
     Vector3 targetPosition;
     GameObject player;
     bool moving = false;
-    string movingToColour;
 
     public HealthBarScript healthBar;
 
@@ -83,26 +82,28 @@ public class HostileMoveScript : MonoBehaviour
             {
                 transform.LookAt(new Vector3(transform.position.x - 1, transform.position.y, transform.position.z), transform.up);
             }
-            else if (player.transform.position.y > transform.position.y + 0.5f)
+            
+            else if (player.transform.position.z > transform.position.z + 0.5f)
             {
-                transform.LookAt(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), transform.up);
+                transform.LookAt(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1), transform.up);
             }
-            else if (player.transform.position.y < transform.position.y - 0.5f)
+            else if (player.transform.position.z < transform.position.z - 0.5f)
             {
-                transform.LookAt(new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), transform.up);
+                transform.LookAt(new Vector3(transform.position.x, transform.position.y, transform.position.z - 1), transform.up);
             }
         }
         else if (Vector3.Dot(ObjectNorm, Vector3.forward) > 0.9f || Vector3.Dot(ObjectNorm, Vector3.back) > 0.9f)
         {
             Debug.Log("Forward/Back");
-            if (player.transform.position.y > transform.position.y + 0.5f)
+            if (player.transform.position.x > transform.position.x + 0.5f)
             {
-                transform.LookAt(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), transform.up);
+                transform.LookAt(new Vector3(transform.position.x + 1, transform.position.y, transform.position.z), transform.up);
             }
-            else if (player.transform.position.y < transform.position.y - 0.5f)
+            else if (player.transform.position.x < transform.position.x - 0.5f)
             {
-                transform.LookAt(new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), transform.up);
+                transform.LookAt(new Vector3(transform.position.x - 1, transform.position.y, transform.position.z), transform.up);
             }
+
             else if (player.transform.position.z > transform.position.z + 0.5f)
             {
                 transform.LookAt(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1), transform.up);
@@ -117,9 +118,16 @@ public class HostileMoveScript : MonoBehaviour
     void GetTargetInfo()
     {
         RaycastHit hit;
-        Vector3 aimDir = transform.TransformDirection(0.0f, -0.4f, 1.0f);
-        if (Physics.Raycast(transform.position, aimDir, out hit, 1.0f))
+        Physics.Raycast(transform.position, transform.forward, out hit, 1.0f);
+        if (hit.transform != null && hit.transform.gameObject.CompareTag("Hostile"))
         {
+            Debug.Log("Hostile Stay");
+            targetPosition = transform.position;
+            moving = true;
+        }
+        else if (Physics.Raycast(transform.position + transform.forward + (transform.up * -0.1f), transform.up * -1, out hit, 1.0f))
+        {
+            Debug.Log(hit.transform.gameObject.name);
             Vector3 rayHitNorm = hit.normal;
             Vector3 ObjectNorm = transform.up;
 
@@ -142,7 +150,6 @@ public class HostileMoveScript : MonoBehaviour
                 {
                     targetPosition = transform.position;
                 }
-                movingToColour = hit.transform.name;
                 moving = true;
             }
         }
@@ -159,7 +166,6 @@ public class HostileMoveScript : MonoBehaviour
 
         if (Vector3.Dot(transform.position.normalized, targetPosition.normalized) > 0.999999f)
         {
-            TileAffect();
             moving = false;
         }
     }
@@ -172,42 +178,16 @@ public class HostileMoveScript : MonoBehaviour
         this.transform.parent = attachTo.transform;
     }
 
-    void TileAffect()
+    private void OnCollisionEnter(Collision collision)
     {
-        if (movingToColour == "Red")
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Heavy Damage!");
-            hostileHealth -= 25.0f;
-            healthBar.SetHealth(hostileHealth);
+            collision.gameObject.GetComponent<PlayerController>().DealDamage();
         }
-        else if (movingToColour == "Orange")
-        {
-            Debug.Log("Light Damage!");
-            hostileHealth -= 10.0f;
-            healthBar.SetHealth(hostileHealth);
-        }
-        else if (movingToColour == "Purple")
-        {
-            Debug.Log("Miss a turn!");
-        }
-        else if (movingToColour == "Blue")
-        {
-            Debug.Log("Heal!");
-            hostileHealth += 25.0f;
-            healthBar.SetHealth(hostileHealth);
-        }
-        else if (movingToColour == "Green")
-        {
-            Debug.Log("Nothing Here!");
-        }
-        else if (movingToColour == "Yellow")
-        {
-            Debug.Log("Score!");
-            hostileHealth += 5.0f;
-        }
-        else
-        {
-            Debug.Log("Tile Not Found");
-        }
+    }
+    public void DealDamage()
+    {
+        Debug.Log("Hostile Dead!");
+        Destroy(this.gameObject);
     }
 }
