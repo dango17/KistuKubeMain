@@ -10,6 +10,12 @@ public class TurnManagerScript : MonoBehaviour
     bool PlayerTurn = true;
 
     private int currentHostile = 0;
+    private int currentTurn = 0;
+
+    public int GetCurrentTurn()
+    {
+        return currentTurn;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -23,9 +29,14 @@ public class TurnManagerScript : MonoBehaviour
     {
         if (PlayerTurn)
         {
-            if (!player.GetComponent<PlayerController>().PlayerMove())
+            if (player == null)
+            {
+                Debug.Log("Player Dead");
+            }
+            else if (!player.GetComponent<PlayerController>().PlayerMove())
             {
                 currentHostile = 0;
+                
                 PlayerTurn = false;
             }
         }
@@ -33,13 +44,18 @@ public class TurnManagerScript : MonoBehaviour
         {
             if (currentHostile < hostileGameObjects.Length)
             {
-                if (!hostileGameObjects[currentHostile].GetComponent<HostileMoveScript>().HostileMove())
+                if (hostileGameObjects[currentHostile] == null)
+                {
+                    currentHostile++;
+                }
+                else if (!hostileGameObjects[currentHostile].GetComponent<HostileMoveScript>().HostileMove())
                 {
                     currentHostile++;
                 }
             }
             else
             {
+                currentTurn++;
                 PlayerTurn = true;
             }
         }
