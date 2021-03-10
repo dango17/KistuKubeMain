@@ -7,34 +7,39 @@ public class Spikes : MonoBehaviour
     [SerializeField]
     private GameObject spikes;
 
+    private GameObject levelControler;
+    private int currentTurn;
+
     // Start is called before the first frame update
     void Start()
     {
-        spikes.SetActive(false);
+        levelControler = GameObject.Find("LevelController");
+        spikes.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Spiked");
-        spikes.SetActive(true);
-        if (other.transform.gameObject.CompareTag("Player"))
+        currentTurn = levelControler.GetComponent<TurnManagerScript>().GetCurrentTurn();
+        if (currentTurn%3 == 0)
         {
-            other.transform.gameObject.GetComponent<PlayerController>().DealDamage();
+            spikes.SetActive(true);
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.up, out hit, 1.0f))
+            {
+                if (hit.transform.gameObject.CompareTag("Player"))
+                {
+                    hit.transform.gameObject.GetComponent<PlayerController>().DealDamage();
+                }
+                if (hit.transform.gameObject.CompareTag("Hostile"))
+                {
+                    hit.transform.gameObject.GetComponent<HostileMoveScript>().DealDamage();
+                }
+            }
         }
-        if (other.transform.gameObject.CompareTag("Hostile"))
+        else
         {
-            other.transform.gameObject.GetComponent<HostileMoveScript>().DealDamage();
+            spikes.SetActive(false);
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        spikes.SetActive(false);
     }
 }
