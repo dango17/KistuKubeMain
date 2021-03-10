@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     public float playerHealth = 100.0f;
     public float playerScore = 0.0f;
 
+    [SerializeField]
+    GameObject deadSign;
+
     private void Start()
     {
         AttachToNearest();
@@ -27,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     public bool PlayerMove()
     {
-        if (Input.GetKeyDown("space")) //Fix for mobile. 
+        if (Input.GetKeyDown("space") && moving == false) //Fix for mobile. 
         //Gunna need 2 finger controller or bottons for spinning
         {
             GetTargetInfo();
@@ -101,6 +104,7 @@ public class PlayerController : MonoBehaviour
     public void DealDamage()
     {
         Debug.Log("Player Dead!");
+        deadSign.SetActive(true);
         Destroy(this.gameObject);
     }
 }
