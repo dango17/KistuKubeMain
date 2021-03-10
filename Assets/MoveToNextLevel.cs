@@ -7,6 +7,7 @@ public class MoveToNextLevel : MonoBehaviour
 {
     public void OnTriggerEnter()
     {
+        Debug.Log("Level Complete");
         SceneManager.LoadScene("Level2");
     }
 }
