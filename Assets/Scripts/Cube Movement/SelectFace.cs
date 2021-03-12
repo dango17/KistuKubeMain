@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class SelectFace : MonoBehaviour
 {
@@ -8,19 +9,34 @@ public class SelectFace : MonoBehaviour
     private ReadCube readCube;
     private int layerMask = 1 << 8;
 
+    //face rotate check variables
+    public Text TurnsLeftValue; 
+    public int currentRotations = 3;
+    private int faceRotated = 1; 
     
     // Start is called before the first frame update
     void Start()
     {
         readCube = FindObjectOfType<ReadCube>();
         cubeState = FindObjectOfType<CubeState>();
+        TurnsLeftValue.text = currentRotations.ToString() + "";
     }
 
-    // Update is called once per frame
+    //Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && !CubeState.autoRotating)
-        {
+        { 
+            //Face selection detected, remove a turn off current value;
+            currentRotations -= faceRotated;
+            //Update Flips Value to UI
+            TurnsLeftValue.text = currentRotations.ToString() + "";
+            //Ran out of turns, turn off script to stop face rotations
+            if (currentRotations < 1)
+            {
+                this.enabled = false; 
+            }
+
             // read the current state of the cube            
             readCube.ReadState();
 
@@ -48,7 +64,7 @@ public class SelectFace : MonoBehaviour
                         //Pick it up
                         cubeState.PickUp(cubeSide);
                         //start the side rotation logic
-                        cubeSide[4].transform.parent.GetComponent<PivotRotation>().Rotate(cubeSide);
+                        cubeSide[4].transform.parent.GetComponent<PivotRotation>().Rotate(cubeSide);                                            
                     }
                 }
             }

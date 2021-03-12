@@ -23,7 +23,8 @@ public class PivotRotation : MonoBehaviour
 
     private ReadCube readCube;
     private CubeState cubeState;
-       
+
+      
     //Calls for read & cube state scripts 
     void Start()
     {
@@ -98,7 +99,7 @@ public class PivotRotation : MonoBehaviour
         mouseRef = Input.mousePosition;
         dragging = true;
         // Create a vector to rotate around
-        localForward = Vector3.zero - side[4].transform.parent.transform.localPosition;
+        localForward = Vector3.zero - side[4].transform.parent.transform.localPosition;      
     }
 
     public void StartAutoRotate(List<GameObject> side, float angle)
