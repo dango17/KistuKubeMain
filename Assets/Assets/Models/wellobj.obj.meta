@@ -1,14 +1,29 @@
 fileFormatVersion: 2
-guid: 22627ec3546e8904d9b3fa3d99a5ff9a
+guid: 2836477e8b2c8bb4ab6afefa6d2b205b
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wire_045012003
+    second: {fileID: 2100000, guid: 04f64ae8f87df884f8b2d163f4f4fcf4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wire_086086086
+    second: {fileID: 2100000, guid: 0ead9b98b9b16b8438f8d9d724a019c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wire_135006006
+    second: {fileID: 2100000, guid: 1b18792bd31dfcd4294079ff9c6b7cd8, type: 2}
   materials:
     importMaterials: 1
-    materialName: 0
+    materialName: 1
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
