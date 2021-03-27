@@ -49,69 +49,21 @@ public class HostileMoveScript : MonoBehaviour
 
     void ChooseDirection()
     {
-        Vector3 ObjectNorm = transform.up;
-
-        if (Vector3.Dot(ObjectNorm, Vector3.up) > 0.9f || Vector3.Dot(ObjectNorm, Vector3.down) > 0.9f)
+        if (player.transform.position.x > transform.position.x + 0.5f)
         {
-            Debug.Log("Top/Bottom");
-            if (player.transform.position.x > transform.position.x + 0.5f)
-            {
-                transform.LookAt(new Vector3(transform.position.x + 1, transform.position.y, transform.position.z), transform.up);
-            }
-            else if (player.transform.position.x < transform.position.x - 0.5f)
-            {
-                transform.LookAt(new Vector3(transform.position.x - 1, transform.position.y, transform.position.z), transform.up);
-            }
-            else if (player.transform.position.z > transform.position.z + 0.5f)
-            {
-                transform.LookAt(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1), transform.up);
-            }
-            else if (player.transform.position.z < transform.position.z - 0.5f)
-            {
-                transform.LookAt(new Vector3(transform.position.x, transform.position.y, transform.position.z - 1), transform.up);
-            }
+            transform.LookAt(new Vector3(transform.position.x + 1, transform.position.y, transform.position.z), transform.up);
         }
-        else if (Vector3.Dot(ObjectNorm, Vector3.left) > 0.9f || Vector3.Dot(ObjectNorm, Vector3.right) > 0.9f)
+        else if (player.transform.position.x < transform.position.x - 0.5f)
         {
-            Debug.Log("Left/Right");
-            if (player.transform.position.x > transform.position.x + 0.5f)
-            {
-                transform.LookAt(new Vector3(transform.position.x + 1, transform.position.y, transform.position.z), transform.up);
-            }
-            else if (player.transform.position.x < transform.position.x - 0.5f)
-            {
-                transform.LookAt(new Vector3(transform.position.x - 1, transform.position.y, transform.position.z), transform.up);
-            }
-            
-            else if (player.transform.position.z > transform.position.z + 0.5f)
-            {
-                transform.LookAt(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1), transform.up);
-            }
-            else if (player.transform.position.z < transform.position.z - 0.5f)
-            {
-                transform.LookAt(new Vector3(transform.position.x, transform.position.y, transform.position.z - 1), transform.up);
-            }
+            transform.LookAt(new Vector3(transform.position.x - 1, transform.position.y, transform.position.z), transform.up);
         }
-        else if (Vector3.Dot(ObjectNorm, Vector3.forward) > 0.9f || Vector3.Dot(ObjectNorm, Vector3.back) > 0.9f)
+        else if (player.transform.position.z > transform.position.z + 0.5f)
         {
-            Debug.Log("Forward/Back");
-            if (player.transform.position.x > transform.position.x + 0.5f)
-            {
-                transform.LookAt(new Vector3(transform.position.x + 1, transform.position.y, transform.position.z), transform.up);
-            }
-            else if (player.transform.position.x < transform.position.x - 0.5f)
-            {
-                transform.LookAt(new Vector3(transform.position.x - 1, transform.position.y, transform.position.z), transform.up);
-            }
-
-            else if (player.transform.position.z > transform.position.z + 0.5f)
-            {
-                transform.LookAt(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1), transform.up);
-            }
-            else if (player.transform.position.z < transform.position.z - 0.5f)
-            {
-                transform.LookAt(new Vector3(transform.position.x, transform.position.y, transform.position.z - 1), transform.up);
-            }
+            transform.LookAt(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1), transform.up);
+        }
+        else if (player.transform.position.z < transform.position.z - 0.5f)
+        {
+            transform.LookAt(new Vector3(transform.position.x, transform.position.y, transform.position.z - 1), transform.up);
         }
     }
 
