@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
         {
             Vector3 rayHitNorm = hit.normal;
             Vector3 playerObjectNorm = transform.up;
-            if (Vector3.Distance(hit.transform.position, transform.position) <= 1.5f)
+            if (Vector3.Distance(hit.transform.position, transform.position) <= 1.1f)
             {
                 if ((Vector3.Dot(rayHitNorm, playerObjectNorm) > 0.9f) && (hit.transform.gameObject.tag == "Face"))
                 {
