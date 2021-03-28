@@ -6,14 +6,27 @@ using System.IO;
 
 public static class SaveSystem
 {
-    public static bool SaveGameData()
+    public static bool SaveLevelData(int a_level, int a_levelScore, int a_levelStars)
     {
-        BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/GameData.save";
+        string path = Application.persistentDataPath + "/LevelData.Isave";
 
+        BinaryFormatter formatter = new BinaryFormatter();
         FileStream fileStream = new FileStream(path, FileMode.Create);
 
-        GameData gameData = new GameData();
+        GameData gameData;
+
+        if (!File.Exists(path))
+        {
+            Debug.Log("File: '" + path + "' does not exist. Creating file.");
+            gameData = new GameData();
+            gameData.levels[a_level - 1] = new LevelData(a_levelScore, a_levelStars);
+        }
+        else
+        {
+            gameData = LoadLevelData();
+            gameData.levels[a_level - 1] = new LevelData(a_levelScore, a_levelStars);
+
+        }
 
         formatter.Serialize(fileStream, gameData);
         fileStream.Close();
@@ -25,9 +38,9 @@ public static class SaveSystem
         return true;
     }
 
-    public static GameData LoadGameData()
+    public static GameData LoadLevelData()
     {
-        string path = Application.persistentDataPath + "/GameData.save";
+        string path = Application.persistentDataPath + "/LevelData.Isave";
         if (!File.Exists(path))
         {
             Debug.LogError("File: '" + path + "' could not be found!");
@@ -48,9 +61,9 @@ public static class SaveSystem
         return gameData;
     }
 
-    public static bool DestroyGameData()
+    public static bool DestroyLevelData()
     {
-        string path = Application.persistentDataPath + "/GameData.save";
+        string path = Application.persistentDataPath + "/LevelData.Isave";
         if (!File.Exists(path))
         {
             Debug.LogError("File: '" + path + "' could not be found!");
