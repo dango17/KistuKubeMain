@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿//Daniel Oldham 
+//S1903729
+//Manages collision with coin, will update coin & score amount 
+//back inside the CollectManager
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

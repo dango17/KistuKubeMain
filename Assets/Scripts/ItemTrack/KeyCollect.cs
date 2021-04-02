@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿//Daniel Oldham 
+//S1903729
+//Manages collision with Key, will turn on well box collider to allow
+//transition to next level, also disables well particles & destroys key object
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

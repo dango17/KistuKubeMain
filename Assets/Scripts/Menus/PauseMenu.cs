@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿//Daniel Oldham 
+//S1903729
+//Pause menu manager. Pauses game once conditions met, freezes time, 
+//also allows navigation between menus inside the pause menu
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; 

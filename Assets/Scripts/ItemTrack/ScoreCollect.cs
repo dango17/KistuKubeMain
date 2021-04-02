@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿//Daniel Oldham 
+//S1903729
+//Adds score to CollectManager to whatever obj this script 
+//is attached too, typically coins & the key
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

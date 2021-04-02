@@ -1,20 +1,18 @@
-﻿using System.Collections;
+﻿//Daniel Oldham 
+//S1903729
+//Allows maviagtion between scenes from the main menu
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject MainMenuScreen;
-
+    
     public void StartGame()
     {
         SceneManager.LoadScene("CubeRotationMechanic");
-    } 
-
-    public void SettingsMenu()
-    {
-
     } 
 
     public void QuitGame()

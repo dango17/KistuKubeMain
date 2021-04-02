@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿//Daniel Oldham 
+//S1903729
+//Allows settings inside the settings menu to be tweaked 
+//in-game via LWPR & main audio mixer 
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio; 
