@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -23058,6 +23058,10 @@ PrefabInstance:
     - target: {fileID: 139076, guid: d4a05104d1cac46d48fd2fdf0685fbf8, type: 3}
       propertyPath: m_Name
       value: Hail - Medium - NoGround
+      objectReference: {fileID: 0}
+    - target: {fileID: 139076, guid: d4a05104d1cac46d48fd2fdf0685fbf8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 414878, guid: d4a05104d1cac46d48fd2fdf0685fbf8, type: 3}
       propertyPath: m_LocalPosition.x
