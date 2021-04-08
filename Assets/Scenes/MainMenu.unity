@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1522139, g: 0.15183562, b: 0.4800738, a: 1}
+  m_IndirectSpecularColor: {r: 0.16701889, g: 0.16040212, b: 0.41051883, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -415,7 +415,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 241.5, y: -3.499977}
+  m_AnchoredPosition: {x: 238, y: 0.5}
   m_SizeDelta: {x: 36.81, y: 6.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &105659471
@@ -466,14 +466,14 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 5
+  m_fontSizeBase: 5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 2
-  m_textAlignment: 257
+  m_fontStyle: 34
+  m_textAlignment: 514
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -2245,6 +2245,7 @@ GameObject:
   - component: {fileID: 961271402}
   - component: {fileID: 961271401}
   - component: {fileID: 961271400}
+  - component: {fileID: 961271403}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -2269,8 +2270,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 32.4, y: -46.3}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 34.5, y: -45.7}
+  m_SizeDelta: {x: 140, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &961271400
 MonoBehaviour:
@@ -2348,7 +2349,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2365,6 +2366,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961271398}
   m_CullTransparentMesh: 0
+--- !u!114 &961271403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961271398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &971175524
 GameObject:
   m_ObjectHideFlags: 0
@@ -2399,7 +2415,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.16998291, y: -45.9}
+  m_AnchoredPosition: {x: 0.16998291, y: -45.5}
   m_SizeDelta: {x: 96.82, y: 25.56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &971175526
@@ -2423,9 +2439,9 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: "Disclaimer: Level 1 serves as more of a tutorial to the games mechanics,
-    and therefore is very simple...Do not go into level 2 and 3 expecting the same
+    and therefore is very simple... Do not go into level 2 and 3 expecting the same
     simplicity, they are significantly harder, and therefore require thought and planning.
-    \n\nHave Fun : )  - Team 11."
+    \n\nHave Fun! ~ From Team 11"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2494,9 +2510,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 971175526}
-    characterCount: 265
+    characterCount: 266
     spriteCount: 0
-    spaceCount: 48
+    spaceCount: 47
     wordCount: 45
     linkCount: 0
     lineCount: 5
@@ -2651,7 +2667,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.17, y: 26.8}
+  m_AnchoredPosition: {x: 0.17, y: 26.2}
   m_SizeDelta: {x: 96.82, y: 15.84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &979323696
@@ -3418,6 +3434,7 @@ GameObject:
   - component: {fileID: 1130459338}
   - component: {fileID: 1130459340}
   - component: {fileID: 1130459339}
+  - component: {fileID: 1130459341}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -3480,6 +3497,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1130459337}
   m_CullTransparentMesh: 0
+--- !u!114 &1130459341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130459337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1149023808
 GameObject:
   m_ObjectHideFlags: 0
@@ -4000,7 +4032,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1387955606
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4039,7 +4071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 1}
+  m_Color: {r: 1, g: 0.8726415, b: 0.8837512, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -7539,7 +7571,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 32
   m_textAlignment: 514
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -7574,7 +7606,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1809881764}
-    characterCount: 6
+    characterCount: 5
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -7902,7 +7934,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.16998291, y: -20.8}
+  m_AnchoredPosition: {x: 0.16998291, y: -20.2}
   m_SizeDelta: {x: 96.82, y: 25.56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2026418003
