@@ -105,6 +105,6 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Player Dead!");
         deadSign.SetActive(true);
-        Destroy(this.gameObject);
+        Time.timeScale = 0;
     }
 }

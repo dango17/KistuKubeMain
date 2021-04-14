@@ -37,7 +37,9 @@ public class SelectFace : MonoBehaviour
         //Challenge notifications
         //This challenge will start true, will go false once player runs out of turns
         Challenge1True.GetComponent<RawImage>().enabled = true;
-        Challenge1False.GetComponent<RawImage>().enabled = false; 
+        Challenge1False.GetComponent<RawImage>().enabled = false;
+        GameObject.Find("LevelController").GetComponent<ChallengeManager>().Challenge1Complete(true);
+
     }
 
     //Update is called once per frame
@@ -65,6 +67,8 @@ public class SelectFace : MonoBehaviour
                     this.enabled = false;
                     Challenge1True.GetComponent<RawImage>().enabled = false;
                     Challenge1False.GetComponent<RawImage>().enabled = true;
+                    GameObject.Find("LevelController").GetComponent<ChallengeManager>().Challenge1Complete(true);
+
                 }
 
                 GameObject face = hit.collider.gameObject;

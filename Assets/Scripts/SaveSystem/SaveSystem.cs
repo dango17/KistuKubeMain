@@ -6,7 +6,7 @@ using System.IO;
 
 public static class SaveSystem
 {
-    public static bool SaveLevelData(int a_level, int a_levelScore, int a_levelStars)
+    public static bool SaveLevelData(int a_level, int a_challenage)
     {
         string path = Application.persistentDataPath + "/LevelData.Isave";
 
@@ -19,12 +19,12 @@ public static class SaveSystem
         {
             Debug.Log("File: '" + path + "' does not exist. Creating file.");
             gameData = new GameData();
-            gameData.levels[a_level - 1] = new LevelData(a_levelScore, a_levelStars);
+            gameData.levels[a_level - 1] = new LevelData(a_challenage);
         }
         else
         {
             gameData = LoadLevelData();
-            gameData.levels[a_level - 1] = new LevelData(a_levelScore, a_levelStars);
+            gameData.levels[a_level - 1] = new LevelData(a_challenage);
 
         }
 
@@ -32,7 +32,7 @@ public static class SaveSystem
         fileStream.Close();
         if (!File.Exists(path))
         {
-            Debug.LogError("File: '" + path + "' failed to save!");
+            Debug.Log("File: '" + path + "' failed to save!");
             return false;
         }
         return true;
@@ -43,12 +43,12 @@ public static class SaveSystem
         string path = Application.persistentDataPath + "/LevelData.Isave";
         if (!File.Exists(path))
         {
-            Debug.LogError("File: '" + path + "' could not be found!");
+            Debug.Log("File: '" + path + "' could not be found!");
             return null;
         }
         else if(new FileInfo(path).Length == 0)
         {
-            Debug.LogError("File: '" + path + "' is empty!");
+            Debug.Log("File: '" + path + "' is empty!");
             return null;
         }
 
@@ -66,14 +66,14 @@ public static class SaveSystem
         string path = Application.persistentDataPath + "/LevelData.Isave";
         if (!File.Exists(path))
         {
-            Debug.LogError("File: '" + path + "' could not be found!");
+            Debug.Log("File: '" + path + "' could not be found!");
             return false;
         }
 
         File.Delete(path);
         if (File.Exists(path))
         {
-            Debug.LogError("Failed to delete file: '" + path + "'!");
+            Debug.Log("Failed to delete file: '" + path + "'!");
             return false;
         }
         return true;

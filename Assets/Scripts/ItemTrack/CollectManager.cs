@@ -69,6 +69,7 @@ public class CollectManager : MonoBehaviour
         {
             Challenge2True.GetComponent<RawImage>().enabled = true;
             Challenge2False.GetComponent<RawImage>().enabled = false;
+            GameObject.Find("LevelController").GetComponent<ChallengeManager>().Challenge2Complete();
         }
     } 
 
@@ -90,6 +91,7 @@ public class CollectManager : MonoBehaviour
         {
             Challenge3True.GetComponent<RawImage>().enabled = true;
             Challenge3False.GetComponent<RawImage>().enabled = false;
+            GameObject.Find("LevelController").GetComponent<ChallengeManager>().Challenge3Complete();
         }
     }
 }

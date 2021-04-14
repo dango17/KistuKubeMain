@@ -9,6 +9,7 @@ TagManager:
   - Hostile
   - Teleporter 1
   - Teleporter 2
+  - Music
   layers:
   - Default
   - TransparentFX

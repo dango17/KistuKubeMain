@@ -14,12 +14,10 @@ public class LevelData
 {
     //Add variables to save here
     //Does not accept unity variables like vector, only base c++
-    public int levelScore;
-    public int levelStars;
+    public bool[] challenage;
 
-    public LevelData(int a_levelScore, int a_levelStars) //Pass in data here
+    public LevelData(int a_challenage) //Pass in data here
     {
-        levelScore = a_levelScore;
-        levelStars = a_levelStars;
+        challenage[a_challenage - 1] = true;
     }
 }

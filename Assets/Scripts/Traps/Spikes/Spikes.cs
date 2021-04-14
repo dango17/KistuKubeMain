@@ -20,7 +20,6 @@ public class Spikes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(spikes.transform.position + new Vector3(0.0f, 0.1f, 0.0f), transform.forward, Color.red);
         currentTurn = levelControler.GetComponent<TurnManagerScript>().GetCurrentTurn();
         if (currentTurn%3 == 0)
         {
@@ -35,7 +34,7 @@ public class Spikes : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(spikes.transform.position + new Vector3(0.0f, 0.1f, 0.0f), transform.forward, out hit, 1.0f))
             {
-                Debug.Log(hit.transform.gameObject.name);
+                //Debug.Log(hit.transform.gameObject.name);
                 if (hit.transform.gameObject.CompareTag("Player"))
                 {
                     hit.transform.gameObject.GetComponent<PlayerController>().DealDamage();

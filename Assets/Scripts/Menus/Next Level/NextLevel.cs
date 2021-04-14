@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class NextLevel : MonoBehaviour
 {
     [SerializeField]
-    GameObject nextMenu;
+    GameObject m_nextMenu;
+
+    [SerializeField]
+    GameObject m_levelHander;
 
     public void OnTriggerEnter()
     {
-        nextMenu.SetActive(true);
+        m_nextMenu.SetActive(true);
+        m_levelHander.GetComponent<ChallengeManager>().SaveChallengeStatus();
     }
 }
