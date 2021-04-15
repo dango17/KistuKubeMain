@@ -26,7 +26,14 @@ public static class SaveSystem
             if (gameData != null)
             {
                 LevelData tempLevelData = gameData.levels[a_level - 1];
-                tempLevelData.challenage[a_challenage - 1] = true;
+                if (tempLevelData != null)
+                {
+                    tempLevelData.challenage[a_challenage - 1] = true;
+                }
+                else
+                {
+                    tempLevelData = new LevelData(a_challenage);
+                }
                 gameData.levels[a_level - 1] = tempLevelData;
             }
             else
