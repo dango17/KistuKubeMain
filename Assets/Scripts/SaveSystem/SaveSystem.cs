@@ -11,7 +11,6 @@ public static class SaveSystem
         string path = Application.persistentDataPath + "/LevelData.Isave";
 
         BinaryFormatter formatter = new BinaryFormatter();
-        FileStream fileStream = new FileStream(path, FileMode.Create);
 
         GameData gameData;
 
@@ -38,6 +37,7 @@ public static class SaveSystem
             }
         }
 
+        FileStream fileStream = new FileStream(path, FileMode.Create);
         formatter.Serialize(fileStream, gameData);
         fileStream.Close();
         if (!File.Exists(path))
@@ -56,7 +56,7 @@ public static class SaveSystem
             Debug.Log("File: '" + path + "' could not be found!");
             return null;
         }
-        else if(new FileInfo(path).Length == 0)
+        else if (new FileInfo(path).Length == 0)
         {
             Debug.Log("File: '" + path + "' is empty!");
             return null;

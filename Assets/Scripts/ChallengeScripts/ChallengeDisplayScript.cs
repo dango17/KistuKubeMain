@@ -15,13 +15,16 @@ public class ChallengeDisplayScript : MonoBehaviour
 
         if (gameData != null)
         {
-            if (gameData.levels[SceneManager.GetActiveScene().buildIndex - 1].challenage[m_challengeNum - 1])
+            if (gameData.levels[SceneManager.GetActiveScene().buildIndex - 1] != null)
             {
-                this.gameObject.GetComponent<TextMeshProUGUI>().color = Color.green;
-            }
-            else
-            {
-                this.gameObject.GetComponent<TextMeshProUGUI>().color = Color.white;
+                if (gameData.levels[SceneManager.GetActiveScene().buildIndex - 1].challenage[m_challengeNum - 1])
+                {
+                    this.gameObject.GetComponent<TextMeshProUGUI>().color = Color.green;
+                }
+                else
+                {
+                    this.gameObject.GetComponent<TextMeshProUGUI>().color = Color.white;
+                }
             }
         }
         else
