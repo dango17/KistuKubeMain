@@ -6,6 +6,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio; 
 
 public class PivotRotation : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class PivotRotation : MonoBehaviour
 
     private ReadCube readCube;
     private CubeState cubeState;
+
+    public AudioSource cubeClick; 
 
       
     //Calls for read & cube state scripts 
@@ -42,6 +45,7 @@ public class PivotRotation : MonoBehaviour
             SpinSide(activeSide);
             if (Input.GetMouseButtonUp(0))
             {
+                cubeClick.Play(); 
                 dragging = false;
                 RotateToRightAngle();
             }
