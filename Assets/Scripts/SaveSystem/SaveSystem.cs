@@ -24,8 +24,18 @@ public static class SaveSystem
         else
         {
             gameData = LoadLevelData();
-            gameData.levels[a_level - 1] = new LevelData(a_challenage);
-
+            if (gameData != null)
+            {
+                LevelData tempLevelData = gameData.levels[a_level - 1];
+                tempLevelData.challenage[a_challenage - 1] = true;
+                gameData.levels[a_level - 1] = tempLevelData;
+            }
+            else
+            {
+                Debug.Log("File: '" + path + "' is empty. Creating context.");
+                gameData = new GameData();
+                gameData.levels[a_level - 1] = new LevelData(a_challenage);
+            }
         }
 
         formatter.Serialize(fileStream, gameData);

@@ -18838,6 +18838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d97b0bb89d8074c9b3b0a7e76120a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubeClick: {fileID: 0}
 --- !u!114 &795401086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18850,6 +18851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d97b0bb89d8074c9b3b0a7e76120a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubeClick: {fileID: 0}
 --- !u!114 &795401087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47735,6 +47737,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2040084927}
   - component: {fileID: 2040084928}
+  - component: {fileID: 2040084929}
   m_Layer: 0
   m_Name: LevelController
   m_TagString: Untagged
@@ -47766,6 +47769,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e6691bfe0ace0541aee7703998fcc74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2040084929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040084926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627f8fd7a99127840b8ae2586e16d100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2044329164
@@ -48946,6 +48961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d97b0bb89d8074c9b3b0a7e76120a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubeClick: {fileID: 0}
 --- !u!65 &2089944739
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54400,6 +54416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d97b0bb89d8074c9b3b0a7e76120a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubeClick: {fileID: 0}
 --- !u!114 &1387447884254162486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54412,6 +54429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d97b0bb89d8074c9b3b0a7e76120a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubeClick: {fileID: 0}
 --- !u!114 &1522063317900724714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54424,6 +54442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d97b0bb89d8074c9b3b0a7e76120a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubeClick: {fileID: 0}
 --- !u!114 &4114172813630956523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54436,6 +54455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d97b0bb89d8074c9b3b0a7e76120a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubeClick: {fileID: 0}
 --- !u!114 &6760017537953367367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54461,6 +54481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d97b0bb89d8074c9b3b0a7e76120a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubeClick: {fileID: 0}
 --- !u!1 &8003325010231431058
 GameObject:
   m_ObjectHideFlags: 0
