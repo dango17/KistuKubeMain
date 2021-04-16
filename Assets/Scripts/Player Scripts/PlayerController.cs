@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
     public bool PlayerMove()
     {
-        if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
+        if (Application.platform == RuntimePlatform.Android)
         {
             if (Input.GetMouseButtonDown(0) && moving == false) //Fix for mobile. 
             {
