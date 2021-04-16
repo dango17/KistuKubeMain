@@ -38,11 +38,7 @@ public class PlayerController : MonoBehaviour
 
     public bool PlayerMove()
     {
-<<<<<<< Updated upstream
-        if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
-=======
         if (Application.platform == RuntimePlatform.Android || EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
->>>>>>> Stashed changes
         {
             if (ButtonDown && moving == false) //Fix for mobile. 
             {
@@ -123,7 +119,7 @@ public class PlayerController : MonoBehaviour
             Vector3 rayHitNorm = hit.normal;
             Vector3 ObjectNorm = transform.up;
 
-            if ((Vector3.Dot(rayHitNorm, ObjectNorm) > 0.9f) && (hit.transform.gameObject.tag == "Face"))
+            if ((Vector3.Dot(rayHitNorm, ObjectNorm) > 0.9f) && (hit.transform.gameObject.tag == "SmallCube"))
             {
                 targetPosition = hit.point;
                 if (Vector3.Dot(ObjectNorm, Vector3.up) > 0.9f || Vector3.Dot(ObjectNorm, Vector3.down) > 0.9f)
