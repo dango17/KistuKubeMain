@@ -32,9 +32,10 @@ public class Spikes : MonoBehaviour
         if (spikes.activeInHierarchy)
         {
             RaycastHit hit;
-            if (Physics.Raycast(spikes.transform.position + new Vector3(0.0f, 0.1f, 0.0f), transform.forward, out hit, 1.0f))
+            Debug.DrawRay(spikes.transform.position + (Vector3.up * 0.1f), transform.forward, Color.red);
+            if (Physics.Raycast(spikes.transform.position + (transform.forward * 0.2f), transform.forward, out hit, 1.0f))
             {
-                //Debug.Log(hit.transform.gameObject.name);
+                Debug.Log(hit.transform.gameObject.name);
                 if (hit.transform.gameObject.CompareTag("Player"))
                 {
                     hit.transform.gameObject.GetComponent<PlayerController>().DealDamage();
