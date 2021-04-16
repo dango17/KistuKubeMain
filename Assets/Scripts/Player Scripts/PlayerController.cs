@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     public float playerHealth = 100.0f;
     public float playerScore = 0.0f;
 
+    public bool ButtonDown = false;
+    public string ButtonPressed;
+
     public AudioSource playerWalk; 
 
     [SerializeField]
@@ -35,11 +38,17 @@ public class PlayerController : MonoBehaviour
 
     public bool PlayerMove()
     {
+<<<<<<< Updated upstream
         if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
+=======
+        if (Application.platform == RuntimePlatform.Android || EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
+>>>>>>> Stashed changes
         {
-            if (Input.GetMouseButtonDown(0) && moving == false) //Fix for mobile. 
+            if (ButtonDown && moving == false) //Fix for mobile. 
             {
-                GetTargetInfo();
+                ChooseDirectionFromButton();
+                GetInfoFromTarget();
+                ButtonDown = false;
                 return true;
             }
             if (moving == true)
@@ -74,6 +83,72 @@ public class PlayerController : MonoBehaviour
                 return false;
             }
             return true;
+        }
+    }
+
+    void ChooseDirectionFromButton()
+    {
+        if (ButtonPressed == "Left")
+        {
+            transform.LookAt(transform.position + transform.right * -1);
+        }
+        else if (ButtonPressed == "Right")
+        {
+            transform.LookAt(transform.position + transform.right);
+        }
+        else if (ButtonPressed == "Up")
+        {
+            transform.LookAt(transform.position + transform.forward);
+        }
+        else if (ButtonPressed == "Down")
+        {
+            transform.LookAt(transform.position + transform.forward * -1);
+        }
+    }
+
+    void GetInfoFromTarget()
+    {
+        RaycastHit hit;
+        Physics.Raycast(transform.position + (transform.up * 0.1f), transform.forward, out hit, 0.6f);
+        if (hit.transform != null)
+        {
+            Debug.Log(hit.transform.gameObject.name);
+            Debug.Log("Player Stay");
+            targetPosition = transform.position;
+            moving = true;
+        }
+        else if (Physics.Raycast(transform.position + transform.forward, transform.up * -1, out hit, 1.0f))
+        {
+            Debug.Log(hit.transform.gameObject.name);
+            Vector3 rayHitNorm = hit.normal;
+            Vector3 ObjectNorm = transform.up;
+
+            if ((Vector3.Dot(rayHitNorm, ObjectNorm) > 0.9f) && (hit.transform.gameObject.tag == "Face"))
+            {
+                targetPosition = hit.point;
+                if (Vector3.Dot(ObjectNorm, Vector3.up) > 0.9f || Vector3.Dot(ObjectNorm, Vector3.down) > 0.9f)
+                {
+                    targetPosition = new Vector3(Mathf.Round(targetPosition.x), transform.position.y, Mathf.Round(targetPosition.z));
+                }
+                else if (Vector3.Dot(ObjectNorm, Vector3.left) > 0.9f || Vector3.Dot(ObjectNorm, Vector3.right) > 0.9f)
+                {
+                    targetPosition = new Vector3(transform.position.x, Mathf.Round(targetPosition.y), Mathf.Round(targetPosition.z));
+                }
+                else if (Vector3.Dot(ObjectNorm, Vector3.forward) > 0.9f || Vector3.Dot(ObjectNorm, Vector3.back) > 0.9f)
+                {
+                    targetPosition = new Vector3(Mathf.Round(targetPosition.x), Mathf.Round(targetPosition.y), transform.position.z);
+                }
+                else
+                {
+                    targetPosition = transform.position;
+                }
+                moving = true;
+            }
+        }
+        else
+        {
+            targetPosition = transform.position;
+            moving = true;
         }
     }
 
