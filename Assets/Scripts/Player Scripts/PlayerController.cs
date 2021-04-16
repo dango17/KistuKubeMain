@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Audio; 
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public float movementSpeed = 1.0f;
     public float playerHealth = 100.0f;
     public float playerScore = 0.0f;
+
+    public AudioSource playerWalk; 
 
     [SerializeField]
     GameObject deadSign;
@@ -85,8 +88,9 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
+        playerWalk.Play();
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, movementSpeed * Time.deltaTime);
-
+        
         if (Vector3.Dot(transform.position.normalized, targetPosition.normalized) > 0.999999f)
         {
             moving = false;

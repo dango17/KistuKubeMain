@@ -18,11 +18,10 @@ public class CoinCollect : MonoBehaviour
     
     public void OnTriggerEnter(Collider other)
     {
-        //Cannot destory gameobject, doesnt allow audio clip tp play, disable instead
-        CoinCollection.Play();
-
         if (other.tag == "Player")
-        {   
+        {
+            //Cannot destory gameobject, doesnt allow audio clip tp play, disable instead
+            CoinCollection.Play();
             //Update UI
             CollectManager.instance.UpdateCoinsUI(coinAmount);
             CollectManager.instance.currentCoins += coinAmount;

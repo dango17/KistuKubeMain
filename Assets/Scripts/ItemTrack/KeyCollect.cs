@@ -15,8 +15,13 @@ public class KeyCollect : MonoBehaviour
     public GameObject collectEffect;
     public GameObject WellUnlock;
 
+    public GameObject KeyOff;
+    public AudioSource Keycollect; 
+
     public void OnTriggerEnter(Collider other)
-    { 
+    {
+        Keycollect.Play(); 
+
         //Update UI with Value just collected
         CollectManager.instance.UpdateKeysUI(KeysAmount);
         CollectManager.instance.currentkeys += KeysAmount;
@@ -30,6 +35,10 @@ public class KeyCollect : MonoBehaviour
 
         //Instantiate collection effect
         Instantiate(collectEffect, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+
+        //Disable the key model, allows sound to still play
+        KeyOff.SetActive(false);
+        //Disable box collider to stop several collisions 
+        KeyOff.GetComponent<BoxCollider>().enabled = false;
     }
 }
