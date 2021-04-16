@@ -8,7 +8,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Audio; 
+using UnityEngine.Audio;
+using UnityEditor;
 
 public class PlayerController : MonoBehaviour
 {
@@ -34,24 +35,46 @@ public class PlayerController : MonoBehaviour
 
     public bool PlayerMove()
     {
-        if (Input.GetKeyDown("space") && moving == false) //Fix for mobile. 
-        //Gunna need 2 finger controller or bottons for spinning
+        if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
         {
-            GetTargetInfo();
+            if (Input.GetMouseButtonDown(0) && moving == false) //Fix for mobile. 
+            {
+                GetTargetInfo();
+                return true;
+            }
+            if (moving == true)
+            {
+                this.transform.parent = null;
+                Move();
+                return true;
+            }
+            else if (this.transform.parent == null)
+            {
+                AttachToNearest();
+                return false;
+            }
             return true;
         }
-        if (moving == true)
+        else
         {
-            this.transform.parent = null;
-            Move();
+            if (Input.GetKeyDown("space") && moving == false) //Fix for mobile. 
+            {
+                GetTargetInfo();
+                return true;
+            }
+            if (moving == true)
+            {
+                this.transform.parent = null;
+                Move();
+                return true;
+            }
+            else if (this.transform.parent == null)
+            {
+                AttachToNearest();
+                return false;
+            }
             return true;
         }
-        else if (this.transform.parent == null)
-        {
-            AttachToNearest();
-            return false;
-        }
-        return true;
     }
 
     void GetTargetInfo()
