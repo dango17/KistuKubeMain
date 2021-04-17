@@ -6,13 +6,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio; 
+using UnityEngine.Audio;
 
 public class PivotRotation : MonoBehaviour
 {
     private List<GameObject> activeSide;
     private Vector3 localForward;
-    private Vector3 mouseRef;
+    private Vector2 mouseRef;
     private bool dragging = false;
 
     private bool autoRotating = false;
@@ -25,9 +25,9 @@ public class PivotRotation : MonoBehaviour
     private ReadCube readCube;
     private CubeState cubeState;
 
-    public AudioSource cubeClick; 
+    public AudioSource cubeClick;
 
-      
+
     //Calls for read & cube state scripts 
     void Start()
     {
@@ -39,13 +39,13 @@ public class PivotRotation : MonoBehaviour
     void LateUpdate()
     {
         if (dragging && !autoRotating)
-        { 
+        {
             //If stopped dragging, call rotate to Right angle 
             //function to snap position  
             SpinSide(activeSide);
-            if (Input.GetTouch(0).phase == TouchPhase.Ended)
+            if (Input.GetTouch(0).phase == TouchPhase.Ended || Input.touchCount > 1) //Input.GetMouseButtonUp(0) 
             {
-                cubeClick.Play(); 
+                cubeClick.Play();
                 dragging = false;
                 RotateToRightAngle();
             }
@@ -53,7 +53,7 @@ public class PivotRotation : MonoBehaviour
         if (autoRotating)
         {
             AutoRotate();
-        }              
+        }
     }
 
     private void SpinSide(List<GameObject> side)
@@ -62,7 +62,7 @@ public class PivotRotation : MonoBehaviour
         rotation = Vector3.zero;
 
         // current mouse position minus the last mouse position
-        Vector3 mouseOffset = (Input.mousePosition - mouseRef);        
+        Vector3 mouseOffset = (Input.GetTouch(0).position - mouseRef);
         //If so, rotate the corrisponding side on the Y axis
         if (side == cubeState.up)
         {
@@ -94,16 +94,16 @@ public class PivotRotation : MonoBehaviour
 
         //Store mousePos
         //Store finger positions
-        mouseRef = Input.mousePosition;
+        mouseRef = Input.GetTouch(0).position;
     }
-       
+
     public void Rotate(List<GameObject> side)
     {
         activeSide = side;
-        mouseRef = Input.mousePosition;
+        mouseRef = Input.GetTouch(0).position;
         dragging = true;
         // Create a vector to rotate around
-        localForward = Vector3.zero - side[4].transform.parent.transform.localPosition;      
+        localForward = Vector3.zero - side[4].transform.parent.transform.localPosition;
     }
 
     public void StartAutoRotate(List<GameObject> side, float angle)
@@ -144,7 +144,7 @@ public class PivotRotation : MonoBehaviour
             readCube.ReadState();
             CubeState.autoRotating = false;
             autoRotating = false;
-            dragging = false;                                                               
+            dragging = false;
         }
-    }         
+    }
 }

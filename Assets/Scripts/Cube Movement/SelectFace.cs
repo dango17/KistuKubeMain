@@ -45,15 +45,15 @@ public class SelectFace : MonoBehaviour
     //Update is called once per frame
     void Update()
     {
-        instance = this; 
+        instance = this;
 
-        if (Input.touchCount > 0 && Input.touchCount < 2 && Input.GetTouch(0).phase == TouchPhase.Began && !CubeState.autoRotating)
-        {            
+        if (Input.GetTouch(0).phase == TouchPhase.Began && Input.touchCount < 2 && !CubeState.autoRotating) //Input.GetMouseButtonDown(0)
+        {
             // read the current state of the cube            
             readCube.ReadState();
             // raycast from the mouse click/finger pos towards the cube to see if a face is hit  
             RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
             if (Physics.Raycast(ray, out hit, 100.0f, layerMask))
             {
                 //Face selection detected, remove a turn off the current turn value;
@@ -90,7 +90,7 @@ public class SelectFace : MonoBehaviour
                         //Pick it up
                         cubeState.PickUp(cubeSide);
                         //start the side rotation logic
-                        cubeSide[4].transform.parent.GetComponent<PivotRotation>().Rotate(cubeSide);                                            
+                        cubeSide[4].transform.parent.GetComponent<PivotRotation>().Rotate(cubeSide);
                     }
                 }
             }
