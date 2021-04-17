@@ -43,7 +43,7 @@ public class PivotRotation : MonoBehaviour
             //If stopped dragging, call rotate to Right angle 
             //function to snap position  
             SpinSide(activeSide);
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetTouch(0).phase == TouchPhase.Ended)
             {
                 cubeClick.Play(); 
                 dragging = false;

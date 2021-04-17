@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     public bool PlayerMove()
     {
-        if (Application.platform == RuntimePlatform.Android || EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
+        if (Application.platform == RuntimePlatform.Android)// || EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
         {
             if (ButtonDown && moving == false) //Fix for mobile. 
             {
@@ -86,19 +86,19 @@ public class PlayerController : MonoBehaviour
     {
         if (ButtonPressed == "Left")
         {
-            transform.LookAt(transform.position + transform.right * -1);
+            transform.LookAt(transform.position + transform.right * -1, transform.up);
         }
         else if (ButtonPressed == "Right")
         {
-            transform.LookAt(transform.position + transform.right);
+            transform.LookAt(transform.position + transform.right, transform.up);
         }
         else if (ButtonPressed == "Up")
         {
-            transform.LookAt(transform.position + transform.forward);
+            transform.LookAt(transform.position + transform.forward, transform.up);
         }
         else if (ButtonPressed == "Down")
         {
-            transform.LookAt(transform.position + transform.forward * -1);
+            transform.LookAt(transform.position + transform.forward * -1, transform.up);
         }
     }
 

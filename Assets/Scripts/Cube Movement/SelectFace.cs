@@ -47,7 +47,7 @@ public class SelectFace : MonoBehaviour
     {
         instance = this; 
 
-        if (Input.GetMouseButtonDown(0) && !CubeState.autoRotating)
+        if (Input.touchCount > 0 && Input.touchCount < 2 && Input.GetTouch(0).phase == TouchPhase.Began && !CubeState.autoRotating)
         {            
             // read the current state of the cube            
             readCube.ReadState();
