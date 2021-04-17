@@ -87,7 +87,7 @@ public class CollectManager : MonoBehaviour
         keyValueTxt.text = currentkeys.ToString() + "/1"; 
 
         //Player has the correct key & score amount, check challenge true
-        if(KeysAmount > 1 && currentScore > 150)
+        if(KeysAmount > 0 && currentScore > 150)
         {
             Challenge3True.GetComponent<RawImage>().enabled = true;
             Challenge3False.GetComponent<RawImage>().enabled = false;
