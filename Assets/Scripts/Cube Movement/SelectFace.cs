@@ -47,13 +47,13 @@ public class SelectFace : MonoBehaviour
     {
         instance = this;
 
-        if (Input.GetTouch(0).phase == TouchPhase.Began && Input.touchCount < 2 && !CubeState.autoRotating) //Input.GetMouseButtonDown(0)
+        if (Input.GetMouseButtonDown(0) && !CubeState.autoRotating)
         {
             // read the current state of the cube            
             readCube.ReadState();
             // raycast from the mouse click/finger pos towards the cube to see if a face is hit  
             RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100.0f, layerMask))
             {
                 //Face selection detected, remove a turn off the current turn value;

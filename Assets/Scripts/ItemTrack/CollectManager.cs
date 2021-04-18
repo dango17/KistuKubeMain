@@ -3,6 +3,7 @@
 //Manages what the player has collected within the game, will then update 
 //UI elements as well as player score, also manages addition challenges in pause menu 
 //UI bug with coin collection stems somewhere within this script
+//Save system implimentation by: Iain Farlow
 
 using System.Collections;
 using System.Collections.Generic;
@@ -69,6 +70,7 @@ public class CollectManager : MonoBehaviour
         {
             Challenge2True.GetComponent<RawImage>().enabled = true;
             Challenge2False.GetComponent<RawImage>().enabled = false;
+            //If challenge complete update the challenge manager
             GameObject.Find("LevelController").GetComponent<ChallengeManager>().Challenge2Complete();
         }
     } 
@@ -91,6 +93,7 @@ public class CollectManager : MonoBehaviour
         {
             Challenge3True.GetComponent<RawImage>().enabled = true;
             Challenge3False.GetComponent<RawImage>().enabled = false;
+            //If challenge complete update the challenge manager
             GameObject.Find("LevelController").GetComponent<ChallengeManager>().Challenge3Complete();
         }
     }
