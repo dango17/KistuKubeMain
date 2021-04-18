@@ -1,4 +1,12 @@
-﻿using System.Collections;
+﻿//ASTAR SCRIPT SCRIPT
+//Use: AStar method
+//Created By: Iain Farlow
+//Created On: 10/04/2021
+//Last Edited: 16/04/2021
+//Edited By: Iain Farlow
+//Due to time restriction this was an attempt to quickly convert a c++ AStar method I had previously written into c#
+//Was abandoned due to time restictions and is NOT in the current build of the game
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,9 +31,11 @@ public class ASTAR
 
     public bool Initilise(char[] a_mapArray, int a_scannedDist)
     {
+        //create array based on dimentios of cube face
         int dimentions = (a_scannedDist * 2) + 1;
         m_nodes = new Node[dimentions * dimentions];
 
+        //Fill the array
         for (int i = 0; i < (dimentions * dimentions); i++)
         {
             m_nodes[i] = new Node();
@@ -196,6 +206,7 @@ public class ASTAR
 
     float distance(Node a, Node b)
     {
+        //use pythag to get direct distnace to end
         return (Mathf.Sqrt((float)((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y))));
     }
 
